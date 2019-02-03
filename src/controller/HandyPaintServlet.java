@@ -9,19 +9,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.HandyCarpet;
+import model.HandyPaint;
 
 /**
- * Servlet implementation class handyCarpetServlet
+ * Servlet implementation class HandyPaintServlet
  */
-@WebServlet("/handyCarpetServlet")
-public class handyCarpetServlet extends HttpServlet {
+@WebServlet("/HandyPaintServlet")
+public class HandyPaintServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public handyCarpetServlet() {
+    public HandyPaintServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -40,41 +40,42 @@ public class handyCarpetServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-	
-		String roomLength = request.getParameter("roomLength");
-		String roomWidth = request.getParameter("roomWidth");
+		String wallHeight = request.getParameter("wallHeight");
+		String wallWidth = request.getParameter("wallWidth");
 		
-		HandyCarpet handy = new HandyCarpet();
+		
+		HandyPaint handyPaint = new HandyPaint();
 		
 		try {
-		handy.setLength(Integer.parseInt(roomLength));
+		handyPaint.setHeight(Double.parseDouble(wallHeight));	
 		}
 		catch (NumberFormatException ex) {
 			PrintWriter writer = response.getWriter();
-			writer.println("Incorrect room length. Please try again.</br>");
+			writer.println("Incorrect wall height. Please try again.</br>");
+			
 		}
-		
+			
 		try {
-		handy.setWidth(Integer.parseInt(roomWidth));
+		handyPaint.setWidth(Double.parseDouble(wallWidth));
 		}
 		catch (NumberFormatException ex) {
 			PrintWriter writer = response.getWriter();
-			writer.println("Incorrect room width. Please try again.</br>");
+			writer.println("Incorrect wall width. Please try again.</br>");		
+			
 		}
 		
-		handy.setArea(handy.getLength(), handy.getWidth());
-		handy.setSquareYards(handy.getArea());
+		handyPaint.setArea(handyPaint.getHeight(), handyPaint.getWidth());
+		handyPaint.setGallonsOfPaint(handyPaint.getArea());
 		
 		
 		PrintWriter writer = response.getWriter();
-		writer.println(handy.toString());
+		writer.println(handyPaint.toString());
 		writer.println("</br><a href='Index.html'>Home</a>");
 		writer.println("</br><a href='FloorCoverTool.jsp'>New Floor Measurement</a>");
 		writer.println("</br><a href='PaintTool.jsp'>New Wall Measurement</a>");
 		
+		
 		writer.close();
-		
-		
 		
 		doGet(request, response);
 	}

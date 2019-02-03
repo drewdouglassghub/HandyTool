@@ -15,8 +15,6 @@ public class HandyCarpet {
 		super();
 		this.length = length;
 		this.width = width;
-		this.area = area;
-		this.squareYards = squareYards;
 	}
 
 	public double getArea() {
@@ -25,7 +23,6 @@ public class HandyCarpet {
 
 	public void setArea(double l, double w) {
 		area = l * w;
-		this.area = area;
 	}
 
 	public double getSquareYards() {
@@ -55,8 +52,9 @@ public class HandyCarpet {
 
 	@Override
 	public String toString() {
-		return "HandyCarpet [length=" + length + ", width=" + width + ", area=" + area + ", squareYards=" + squareYards
-				+ "]";
+		return "Handy Carpet Report: [Room length = " + length + " ft, Room width = " + 
+				width + " ft, Room area = " + area + " square ft, Total square yards = " + squareYards
+				+ " square yards]";
 	}
 	
 	
